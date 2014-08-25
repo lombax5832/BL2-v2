@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "bl2_v2",
+  "name": "Borderlands 2",
+  "description": "Mod that adds borderlands-like weapons and what-not to minecraft.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["lombax5832"],
+  "credits": "Forge and Forge Mod Loader for making modding possible",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
