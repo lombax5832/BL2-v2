@@ -2,7 +2,7 @@ package lombax5832.BL2_v2.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.MinecraftForgeClient;
-import lombax5832.BL2_v2.client.model.ModelCylinderTest;
+import lombax5832.BL2_v2.client.render.RenderItemGunModel;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
 
@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy{
 	
 	@Override
 	public void registerItemRenderer(){
-		MinecraftForgeClient.registerItemRenderer(ModItems.itemGun, new ModelCylinderTest());
+		MinecraftForgeClient.registerItemRenderer(ModItems.itemGun, new RenderItemGunModel());
 	}
 	
 }

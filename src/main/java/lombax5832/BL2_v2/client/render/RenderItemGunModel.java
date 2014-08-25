@@ -1,4 +1,4 @@
-package lombax5832.BL2_v2.client.model;
+package lombax5832.BL2_v2.client.render;
 
 import lombax5832.BL2_v2.BL2;
 import net.minecraft.client.Minecraft;
@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class ModelCylinderTest implements IItemRenderer{
+public class RenderItemGunModel implements IItemRenderer{
 
 	private Minecraft minecraft;
 	
@@ -26,7 +26,7 @@ public class ModelCylinderTest implements IItemRenderer{
 	private ResourceLocation modelCylinderResource = new ResourceLocation("bl2_v2:models/test.obj");
 	private IModelCustom modelCylinder;
 	
-	public ModelCylinderTest() {
+	public RenderItemGunModel() {
 		this.minecraft = Minecraft.getMinecraft();
 		modelCylinder = AdvancedModelLoader.loadModel(modelCylinderResource);
 	}
