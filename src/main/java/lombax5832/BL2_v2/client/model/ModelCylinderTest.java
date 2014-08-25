@@ -28,24 +28,28 @@ public class ModelCylinderTest implements IItemRenderer{
 	
 	public ModelCylinderTest() {
 		this.minecraft = Minecraft.getMinecraft();
-		
+		modelCylinder = AdvancedModelLoader.loadModel(modelCylinderResource);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch(type){
-			case INVENTORY:{
-				renderCylinder(minecraft,135F,0F,1F,0F,0F,0F,0F);
-			}
 			case ENTITY:{
 				renderCylinder(minecraft,0,0F,1F,0F,0F,0F,0F);
-			}
-			case EQUIPPED_FIRST_PERSON:{
-				renderCylinder(minecraft,135F,0F,1F,0F,0F,0F,0F);
+				break;
 			}
 			case EQUIPPED:{
-				renderCylinder(minecraft,135F,0F,1F,0F,0F,0F,0F);
+				renderCylinder(minecraft,110,-1,1,0,1F,1F,1F);
+				break;
+			}
+			case EQUIPPED_FIRST_PERSON:{
+				renderCylinder(minecraft,15F,1F,1F,2F,0.53F,0F,1F);
+				break;
+			}
+			case INVENTORY:{
+				renderCylinder(minecraft,135F,0F,1F,0F,0.5F,-1F,-0.5F);
+				break;
 			}
 			default:
 				break;
@@ -53,11 +57,10 @@ public class ModelCylinderTest implements IItemRenderer{
 	}
 	
 	public void renderCylinder(Minecraft minecraft,float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
-		TextureManager render = minecraft.renderEngine;
-		modelCylinder = AdvancedModelLoader.loadModel(modelCylinderResource);
 		GL11.glPushMatrix();
+		TextureManager render = minecraft.renderEngine;
 		GL11.glTranslatef(xPos, yPos, zPos);
-		GL11.glRotated(angle, xRot, yRot, zRot);
+		GL11.glRotatef(angle, xRot, yRot, zRot);
 		render.bindTexture(textureCylinderResource);
 		modelCylinder.renderAll();
 		GL11.glPopMatrix();
@@ -79,9 +82,8 @@ public class ModelCylinderTest implements IItemRenderer{
 				return true;
 			}
 			default:
-				break;
+				return false;
 		}
-		return false;
 	}
 
 	@Override
@@ -101,8 +103,7 @@ public class ModelCylinderTest implements IItemRenderer{
 				return true;
 			}
 			default:
-				break;
+				return false;		
 		}
-		return false;
 	}
 }
