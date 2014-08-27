@@ -7,6 +7,7 @@ import net.minecraft.util.StatCollector;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
+import lombax5832.BL2_v2.client.resource.TextureLocation;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
 import lombax5832.BL2_v2.lib.Unlocalized;
 
@@ -25,5 +26,14 @@ public class ItemGunUtils {
 	public static void addCreatorName(List list, GunProperties atr){
 		if(atr.creator != "")
 			list.add(StatCollector.translateToLocal(Unlocalized.STRING_CREATOR)+": "+atr.creator);
+	}
+	
+	/**
+	 * Adds the name of the camouflage to the description
+	 * @param list List to add string to
+	 * @param atr GunProperties object to get data from
+	 */
+	public static void addCamoName(List list, GunProperties atr){
+		list.add(StatCollector.translateToLocal(TextureLocation.getResourceName(atr.camo))+" "+StatCollector.translateToLocal(Unlocalized.STRING_CAMO));
 	}
 }

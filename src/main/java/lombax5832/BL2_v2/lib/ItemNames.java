@@ -4,4 +4,8 @@ public class ItemNames {
 	public static final String BL2_PREFIX = "bl2_v2.";
 	
 	public static final String GUN_DEFAULT_NAME = BL2_PREFIX+"GunDefault";
+	
+	public static final String ITEM_TEMP_NAME = BL2_PREFIX+"itemTemp";
+	
+	
 }

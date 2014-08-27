@@ -1,6 +1,9 @@
 package lombax5832.BL2_v2.client.render;
 
 import lombax5832.BL2_v2.BL2;
+import lombax5832.BL2_v2.client.model.ModelStorage;
+import lombax5832.BL2_v2.client.resource.TextureLocation;
+import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -22,33 +25,28 @@ public class RenderItemGunModel implements IItemRenderer{
 
 	private Minecraft minecraft;
 	
-	private ResourceLocation textureCylinderResource = new ResourceLocation("bl2_v2:textures/models/pistol.png");
-	private ResourceLocation modelCylinderResource = new ResourceLocation("bl2_v2:models/test.obj");
-	private IModelCustom modelCylinder;
-	
 	public RenderItemGunModel() {
 		this.minecraft = Minecraft.getMinecraft();
-		modelCylinder = AdvancedModelLoader.loadModel(modelCylinderResource);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch(type){
 			case ENTITY:{
-				renderCylinder(minecraft,0,0F,1F,0F,0F,0F,0F);
+				renderCylinder(minecraft, stack, 0,0F,1F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
-				renderCylinder(minecraft,110,-1,1,0,1F,1F,1F);
+				renderCylinder(minecraft, stack, 110,-1,1,0,1F,1F,1F);
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON:{
-				renderCylinder(minecraft,15F,1F,1F,2F,0.53F,0F,1F);
+				renderCylinder(minecraft, stack, 15F,1F,1F,2F,0.53F,0F,1F);
 				break;
 			}
 			case INVENTORY:{
-				renderCylinder(minecraft,135F,0F,1F,0F,0.5F,-1F,-0.5F);
+				renderCylinder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				break;
 			}
 			default:
@@ -56,13 +54,14 @@ public class RenderItemGunModel implements IItemRenderer{
 		}
 	}
 	
-	public void renderCylinder(Minecraft minecraft,float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
-		GL11.glPushMatrix();
+	public void renderCylinder(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
+		GunProperties atr = new GunProperties(stack);
 		TextureManager render = minecraft.renderEngine;
+		render.bindTexture(TextureLocation.getResource(atr.camo));
+		GL11.glPushMatrix();
 		GL11.glTranslatef(xPos, yPos, zPos);
 		GL11.glRotatef(angle, xRot, yRot, zRot);
-		render.bindTexture(textureCylinderResource);
-		modelCylinder.renderAll();
+		ModelStorage.getModel(0).renderAll();
 		GL11.glPopMatrix();
 	}
 	

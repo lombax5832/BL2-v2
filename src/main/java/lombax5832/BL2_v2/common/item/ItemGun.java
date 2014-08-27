@@ -26,6 +26,7 @@ public class ItemGun extends ItemBL2{
 		list.clear();
 		list.add(StatCollector.translateToLocal(this.getUnlocalizedName()));
 		GunProperties atr = new GunProperties(stack);
+		ItemGunUtils.addCamoName(list, atr);
 		ItemGunUtils.addCreatorName(list, atr);
 	}
 	
@@ -84,6 +85,8 @@ public class ItemGun extends ItemBL2{
 		public ItemStack stack;
 		
 		public String creator = "";
+		
+		public int camo = 0;
 	
 		public GunProperties(ItemStack stack){
 			this.stack = stack;
@@ -106,6 +109,8 @@ public class ItemGun extends ItemBL2{
 	        //Where NBT data is saved
 	        tag.setString("creator", creator);
 	        
+	        tag.setInteger("camo", camo);
+	        
 	        if (newTag) {
 	            stack.setTagCompound(tag);
 	        }
@@ -124,6 +129,8 @@ public class ItemGun extends ItemBL2{
 
             //Where NBT data is loaded
             creator = tag.getString("creator");
+            
+            camo = tag.getInteger("camo");
 		}
 	}
 }

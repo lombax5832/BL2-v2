@@ -3,6 +3,16 @@ itemGroup.bl2_v2=Borderlands 2
 
 # Items
 item.bl2_v2.GunDefault.name=Default Gun
+item.bl2_v2.itemTemp.name=Admin Gun Gen
 
 # Strings
 string.bl2_v2.creator=Creator
+string.bl2_v2.camo=Camo
+
+# Textures
+texture.bl2_v2.winter=Winter
+texture.bl2_v2.forest=Forest
+texture.bl2_v2.desert=Desert
+texture.bl2_v2.blueTiger=Blue Tiger
+texture.bl2_v2.gold=Gold
+texture.bl2_v2.rust=Worn

@@ -37,6 +37,8 @@ public class BL2 {
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		proxy.addTextures();
+		proxy.addModels();
 		proxy.registerItemRenderer();
 	}
 }
