@@ -2,8 +2,8 @@ package lombax5832.BL2_v2.client.render;
 
 import lombax5832.BL2_v2.BL2;
 import lombax5832.BL2_v2.client.model.ModelStorage;
-import lombax5832.BL2_v2.client.resource.TextureLocation;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
+import lombax5832.BL2_v2.common.resource.TextureLocation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -25,6 +25,8 @@ public class RenderItemGunModel implements IItemRenderer{
 
 	private Minecraft minecraft;
 	
+	
+	
 	public RenderItemGunModel() {
 		this.minecraft = Minecraft.getMinecraft();
 	}
@@ -34,7 +36,8 @@ public class RenderItemGunModel implements IItemRenderer{
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch(type){
 			case ENTITY:{
-				renderCylinder(minecraft, stack, 0,0F,1F,0F,0F,0F,0F);
+				renderCylinder(minecraft, stack, 0,0F,1F,0F,-0.5F,0F,.5F);
+				renderRarityBeacon(minecraft, stack, 0,0F,0F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
@@ -63,6 +66,21 @@ public class RenderItemGunModel implements IItemRenderer{
 		GL11.glRotatef(angle, xRot, yRot, zRot);
 		ModelStorage.getModel(0).renderAll();
 		GL11.glPopMatrix();
+	}
+	
+	public void renderRarityBeacon(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
+		GunProperties atr = new GunProperties(stack);
+		TextureManager render = minecraft.renderEngine;
+		render.bindTexture(TextureLocation.rarityBeaconTexture);
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4f(1F, 1F, 1F, 0.8F);
+		GL11.glTranslatef(xPos, yPos, zPos);
+		GL11.glRotatef(angle, xRot, yRot, zRot);
+		GL11.glScalef(1.5F, 2F, 1.5F);
+		ModelStorage.rarityBeaconModel.renderAll();
+		GL11.glPopMatrix();
+		GL11.glDisable(GL11.GL_BLEND);
 	}
 	
 	@Override

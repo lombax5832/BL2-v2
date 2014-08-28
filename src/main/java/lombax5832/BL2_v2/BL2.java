@@ -27,12 +27,12 @@ public class BL2 {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		ModItems.initItems();
+		
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		
+		ModItems.initItems();
 	}
 	
 	@EventHandler

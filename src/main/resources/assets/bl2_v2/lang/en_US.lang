@@ -8,6 +8,9 @@ item.bl2_v2.itemTemp.name=Admin Gun Gen
 # Strings
 string.bl2_v2.creator=Creator
 string.bl2_v2.camo=Camo
+string.bl2_v2.ammo=Ammo
+string.bl2_v2.rpm=RPM
+string.bl2_v2.semi-auto=Semi-Automatic
 
 # Textures
 texture.bl2_v2.winter=Winter

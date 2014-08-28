@@ -1,4 +1,4 @@
-package lombax5832.BL2_v2.client.resource;
+package lombax5832.BL2_v2.common.resource;
 
 public class ModTextureResources {
 	

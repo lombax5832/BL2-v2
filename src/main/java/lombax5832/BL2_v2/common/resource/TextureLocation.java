@@ -1,4 +1,4 @@
-package lombax5832.BL2_v2.client.resource;
+package lombax5832.BL2_v2.common.resource;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,8 @@ public class TextureLocation {
 	private static ArrayList textureNames = new ArrayList();
 	
 	private final static ResourceLocation defaultTexture = new ResourceLocation("bl2_v2:textures/models/guntextures/default.png");
+	
+	public final static ResourceLocation rarityBeaconTexture = new ResourceLocation("bl2_v2:textures/models/RarityBeacon.png");
 	
 	private final static String defaultTextureName = "Default Gun";
 	

@@ -3,6 +3,7 @@ package lombax5832.BL2_v2.common.item;
 import java.util.List;
 
 import lombax5832.BL2_v2.lib.ItemNames;
+import lombax5832.BL2_v2.util.ItemGunInfoUtils;
 import lombax5832.BL2_v2.util.ItemGunUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -26,20 +27,42 @@ public class ItemGun extends ItemBL2{
 		list.clear();
 		list.add(StatCollector.translateToLocal(this.getUnlocalizedName()));
 		GunProperties atr = new GunProperties(stack);
-		ItemGunUtils.addCamoName(list, atr);
-		ItemGunUtils.addCreatorName(list, atr);
+		ItemGunInfoUtils.addGunInfo(list, atr);
 	}
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5){
+		
+		GunProperties atr = new GunProperties(stack);
+		
 		if(((EntityPlayer) entity).getHeldItem() != null && ((EntityPlayer) entity).getHeldItem() == stack){
-			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
-			GunProperties atr = new GunProperties(stack);
-	        if (atr.creator == "" && entity instanceof EntityPlayer) {
-	            atr.creator = ((EntityPlayer) entity).getDisplayName();
+	        
+	        if(ItemGunUtils.canShoot(atr, (EntityPlayer) entity)){
+	        	ItemGunUtils.gunShoot(atr, (EntityPlayer) entity);
 	        }
-	        atr.save(stack);
+	        
+	        ItemGunUtils.handleShotLastTick(atr, (EntityPlayer) entity);
+	        
+			
+			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
+			
+	        
 		}
+		
+		ItemGunUtils.updateCreatorName(atr, (EntityPlayer) entity);
+		
+		atr.save(stack);
+        
+	}
+	
+	@Override
+    public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer entity) {
+		GunProperties atr = new GunProperties(stack);
+		atr.isShooting = true;
+		if(atr.currentAmmo>0)
+			atr.rightClickTicker = 0;
+		atr.save(stack);
+		return stack;
 	}
 	
 	//Used to improve aesthetics of how the player holds the gun
@@ -50,9 +73,8 @@ public class ItemGun extends ItemBL2{
     }
 	
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack)
-    {
-        return 72000;
+	public int getMaxItemUseDuration(ItemStack stack){
+        return 2;
     }
 	
 	@Override
@@ -86,7 +108,23 @@ public class ItemGun extends ItemBL2{
 		
 		public String creator = "";
 		
+		public boolean isShooting = false;
+		public boolean shotLastTick = false;
+		public boolean isSemiAuto = false;
+		
 		public int camo = 0;
+		
+		public int currentAmmo = 0;
+		public int maxAmmo = 0;
+		
+		public int fireTicker = 0;
+		public int fireRate = 0;
+		
+		public int shotLastTickTicker = 0;
+		
+		public int rightClickTicker = 10;
+		
+		public float recoilCushion = 0;
 	
 		public GunProperties(ItemStack stack){
 			this.stack = stack;
@@ -109,7 +147,23 @@ public class ItemGun extends ItemBL2{
 	        //Where NBT data is saved
 	        tag.setString("creator", creator);
 	        
+	        tag.setBoolean("isShooting", isShooting);
+	        tag.setBoolean("shotLastTick", shotLastTick);
+	        tag.setBoolean("isSemiAuto", isSemiAuto);
+	        
 	        tag.setInteger("camo", camo);
+	        
+	        tag.setInteger("currentAmmo", currentAmmo);
+	        tag.setInteger("maxAmmo", maxAmmo);
+	        
+	        tag.setInteger("fireTicker", fireTicker);
+	        tag.setInteger("fireRate", fireRate);
+	        
+	        tag.setInteger("shotLastTickTicker", shotLastTickTicker);
+	        
+	        tag.setInteger("rightClickTicker", rightClickTicker);
+	        
+	        tag.setFloat("recoilCushion", recoilCushion);
 	        
 	        if (newTag) {
 	            stack.setTagCompound(tag);
@@ -130,7 +184,23 @@ public class ItemGun extends ItemBL2{
             //Where NBT data is loaded
             creator = tag.getString("creator");
             
+            isShooting = tag.getBoolean("isShooting");
+            shotLastTick = tag.getBoolean("shotLastTick");
+            isSemiAuto = tag.getBoolean("isSemiAuto");
+            
             camo = tag.getInteger("camo");
+            
+            currentAmmo = tag.getInteger("currentAmmo");
+            maxAmmo = tag.getInteger("maxAmmo");
+            
+            fireTicker = tag.getInteger("fireTicker");
+            fireRate = tag.getInteger("fireRate");
+            
+            shotLastTickTicker = tag.getInteger("shotLastTickTicker");
+            
+            rightClickTicker = tag.getInteger("rightClickTicker");
+            
+            recoilCushion = tag.getFloat("recoilCushion");
 		}
 	}
 }

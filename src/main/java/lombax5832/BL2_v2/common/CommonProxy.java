@@ -1,6 +1,6 @@
 package lombax5832.BL2_v2.common;
 
-import lombax5832.BL2_v2.client.resource.TextureLocation;
+import lombax5832.BL2_v2.common.resource.TextureLocation;
 
 /**
  * Proxy class to do certain things on the server side

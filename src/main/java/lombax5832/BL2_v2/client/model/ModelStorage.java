@@ -13,6 +13,10 @@ import net.minecraftforge.client.model.IModelCustom;
  */
 public class ModelStorage {
 	
+	public static ResourceLocation rarityBeaconLocation = new ResourceLocation("bl2_v2:models/RarityBeacon.obj");
+	
+	public static IModelCustom rarityBeaconModel = AdvancedModelLoader.loadModel(rarityBeaconLocation);
+	
 	static ArrayList models = new ArrayList();
 	
 	public static void addModel(ResourceLocation location){

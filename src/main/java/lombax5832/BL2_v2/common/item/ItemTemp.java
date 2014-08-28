@@ -19,7 +19,7 @@ public class ItemTemp extends ItemBL2{
 	
 	@Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer entity) {
-		for(int i=0;i<100;i++)
+		for(int i=0;i<8;i++)
 			entity.dropPlayerItemWithRandomChoice(ItemGunGenerators.genRandomGun(), false);
 		stack.stackSize--;
 		return stack;

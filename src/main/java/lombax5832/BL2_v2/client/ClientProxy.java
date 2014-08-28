@@ -3,10 +3,10 @@ package lombax5832.BL2_v2.client;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.MinecraftForgeClient;
 import lombax5832.BL2_v2.client.render.RenderItemGunModel;
-import lombax5832.BL2_v2.client.resource.ModelLocation;
-import lombax5832.BL2_v2.client.resource.TextureLocation;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
+import lombax5832.BL2_v2.common.resource.ModelLocation;
+import lombax5832.BL2_v2.common.resource.TextureLocation;
 
 /**
  * Proxy class to do certain things on the client side
