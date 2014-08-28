@@ -13,19 +13,21 @@ import net.minecraft.util.ResourceLocation;
  */
 public class ModelLocation {
 	
-	static ArrayList models = new ArrayList();
+	private static ArrayList gunModels = new ArrayList();
 	
-	static ResourceLocation defaultModel = new ResourceLocation("bl2_v2:models/gunmodels/pistol.obj");
+	private static ResourceLocation defaultModel = new ResourceLocation("bl2_v2:models/gunmodels/pistol.obj");
 	
-	public static void addResource(String path){
+	public static ResourceLocation rarityBeaconModel = new ResourceLocation("bl2_v2:models/RarityBeacon.obj");
+	
+	public static void addGunModelResource(String path){
 		ResourceLocation toAdd = new ResourceLocation("bl2_v2:models/gunmodels/"+path);
-		models.add(toAdd);
+		gunModels.add(toAdd);
 		ModelStorage.addModel(toAdd);
 	}
 	
-	public static ResourceLocation getResource(int index){
-		if(models.size()>index&&models.get(index)!=null&&models.get(index) instanceof ResourceLocation)
-			return (ResourceLocation) models.get(index);
+	public static ResourceLocation getGunModelResource(int index){
+		if(gunModels.size()>index&&gunModels.get(index)!=null&&gunModels.get(index) instanceof ResourceLocation)
+			return (ResourceLocation) gunModels.get(index);
 		return defaultModel;
 	}
 }

@@ -16,12 +16,17 @@ public class CommonProxy {
 	public void registerItemRenderer() {}
 
 	public void addTextures(){
-		TextureLocation.addResource("winter");
-		TextureLocation.addResource("forest");
-		TextureLocation.addResource("desert");
-		TextureLocation.addResource("blueTiger");
-		TextureLocation.addResource("gold");
-		TextureLocation.addResource("rust");
+		TextureLocation.addGunTextureResource("winter");
+		TextureLocation.addGunTextureResource("forest");
+		TextureLocation.addGunTextureResource("desert");
+		TextureLocation.addGunTextureResource("blueTiger");
+		TextureLocation.addGunTextureResource("gold");
+		TextureLocation.addGunTextureResource("rust");
+		
+		TextureLocation.addRarityTextureResource("uncommon");
+		TextureLocation.addRarityTextureResource("rare");
+		TextureLocation.addRarityTextureResource("epic");
+		TextureLocation.addRarityTextureResource("legendary");
 	}
 
 	public void addModels() {}

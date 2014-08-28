@@ -1,15 +1,13 @@
 package lombax5832.BL2_v2.util;
 
 import java.util.List;
-import java.util.Properties;
-
-import net.minecraft.util.StatCollector;
-
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
 import lombax5832.BL2_v2.common.resource.TextureLocation;
+import lombax5832.BL2_v2.lib.Colors;
 import lombax5832.BL2_v2.lib.Unlocalized;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 /**
  * Utility classes to reduce clutter in the main ItemGun class
@@ -50,15 +48,30 @@ public class ItemGunInfoUtils {
 	}
 	
 	/**
+	 * 
+	 * @param list List to add string to
+	 * @param atr GunProperties object to get data from
+	 */
+	public static void addGunName(List list, GunProperties atr, ItemStack stack){
+			StringBuilder gunName = new StringBuilder();
+			if(atr.rarity>0)
+				gunName.append(Colors.rarityColors[atr.rarity-1]);
+			gunName.append(StatCollector.translateToLocal(stack.getUnlocalizedName()+".name"));
+			String name = gunName.toString();
+			list.add(name);
+	}
+	
+	/**
 	 * Adds the name of the camouflage to the description
 	 * @param list List to add string to
 	 * @param atr GunProperties object to get data from
 	 */
 	public static void addCamoName(List list, GunProperties atr){
-		list.add(StatCollector.translateToLocal(TextureLocation.getResourceName(atr.camo))+" "+StatCollector.translateToLocal(Unlocalized.STRING_CAMO));
+		list.add(StatCollector.translateToLocal(TextureLocation.getGunTextureResourceName(atr.camo))+" "+StatCollector.translateToLocal(Unlocalized.STRING_CAMO));
 	}
 	
-	public static void addGunInfo(List list, GunProperties atr){
+	public static void addGunInfo(List list, GunProperties atr, ItemStack stack){
+		addGunName(list, atr, stack);
 		addAmmoInfo(list, atr);
 		addFireRateInfo(list, atr);
 		addCamoName(list, atr);

@@ -2,6 +2,8 @@ package lombax5832.BL2_v2.client.model;
 
 import java.util.ArrayList;
 
+import lombax5832.BL2_v2.common.resource.ModelLocation;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
@@ -13,9 +15,7 @@ import net.minecraftforge.client.model.IModelCustom;
  */
 public class ModelStorage {
 	
-	public static ResourceLocation rarityBeaconLocation = new ResourceLocation("bl2_v2:models/RarityBeacon.obj");
-	
-	public static IModelCustom rarityBeaconModel = AdvancedModelLoader.loadModel(rarityBeaconLocation);
+	public static IModelCustom rarityBeaconModel = AdvancedModelLoader.loadModel(ModelLocation.rarityBeaconModel);
 	
 	static ArrayList models = new ArrayList();
 	

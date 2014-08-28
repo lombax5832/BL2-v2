@@ -27,18 +27,18 @@ public class BL2 {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
 		ModItems.initItems();
 	}
 	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event){
+	public void init(FMLInitializationEvent event) {
 		proxy.addTextures();
 		proxy.addModels();
 		proxy.registerItemRenderer();
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event){
+		
 	}
 }

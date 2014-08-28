@@ -25,9 +25,8 @@ public class ItemGun extends ItemBL2{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean par4) {
 		list.clear();
-		list.add(StatCollector.translateToLocal(this.getUnlocalizedName()));
 		GunProperties atr = new GunProperties(stack);
-		ItemGunInfoUtils.addGunInfo(list, atr);
+		ItemGunInfoUtils.addGunInfo(list, atr, stack);
 	}
 	
 	@Override
@@ -114,6 +113,8 @@ public class ItemGun extends ItemBL2{
 		
 		public int camo = 0;
 		
+		public int rarity = 0;
+		
 		public int currentAmmo = 0;
 		public int maxAmmo = 0;
 		
@@ -153,6 +154,8 @@ public class ItemGun extends ItemBL2{
 	        
 	        tag.setInteger("camo", camo);
 	        
+	        tag.setInteger("rarity", rarity);
+	        
 	        tag.setInteger("currentAmmo", currentAmmo);
 	        tag.setInteger("maxAmmo", maxAmmo);
 	        
@@ -189,6 +192,8 @@ public class ItemGun extends ItemBL2{
             isSemiAuto = tag.getBoolean("isSemiAuto");
             
             camo = tag.getInteger("camo");
+            
+            rarity = tag.getInteger("rarity");
             
             currentAmmo = tag.getInteger("currentAmmo");
             maxAmmo = tag.getInteger("maxAmmo");

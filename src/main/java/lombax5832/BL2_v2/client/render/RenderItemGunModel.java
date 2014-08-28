@@ -60,7 +60,7 @@ public class RenderItemGunModel implements IItemRenderer{
 	public void renderCylinder(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
 		GunProperties atr = new GunProperties(stack);
 		TextureManager render = minecraft.renderEngine;
-		render.bindTexture(TextureLocation.getResource(atr.camo));
+		render.bindTexture(TextureLocation.getGunTextureResource(atr.camo));
 		GL11.glPushMatrix();
 		GL11.glTranslatef(xPos, yPos, zPos);
 		GL11.glRotatef(angle, xRot, yRot, zRot);
@@ -70,17 +70,19 @@ public class RenderItemGunModel implements IItemRenderer{
 	
 	public void renderRarityBeacon(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
 		GunProperties atr = new GunProperties(stack);
-		TextureManager render = minecraft.renderEngine;
-		render.bindTexture(TextureLocation.rarityBeaconTexture);
-		GL11.glPushMatrix();
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glColor4f(1F, 1F, 1F, 0.8F);
-		GL11.glTranslatef(xPos, yPos, zPos);
-		GL11.glRotatef(angle, xRot, yRot, zRot);
-		GL11.glScalef(1.5F, 2F, 1.5F);
-		ModelStorage.rarityBeaconModel.renderAll();
-		GL11.glPopMatrix();
-		GL11.glDisable(GL11.GL_BLEND);
+		if(atr.rarity>0){
+			TextureManager render = minecraft.renderEngine;
+			render.bindTexture(TextureLocation.getRarityTextureResource(atr.rarity-1));
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glColor4f(1F, 1F, 1F, 0.8F);
+			GL11.glTranslatef(xPos, yPos, zPos);
+			GL11.glRotatef(angle, xRot, yRot, zRot);
+			GL11.glScalef(1.5F, 2F, 1.5F);
+			ModelStorage.rarityBeaconModel.renderAll();
+			GL11.glPopMatrix();
+			GL11.glDisable(GL11.GL_BLEND);
+		}
 	}
 	
 	@Override
