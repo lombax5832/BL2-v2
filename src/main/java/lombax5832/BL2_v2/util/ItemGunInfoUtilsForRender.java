@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
  * 
  * @author lombax5832
  */
-public class ItemGunInfoUtils {
+public class ItemGunInfoUtilsForRender {
 	/**
 	 * Adds the name of the first person to pick up the item to the description 
 	 * 
@@ -33,7 +33,7 @@ public class ItemGunInfoUtils {
 	 * @param atr GunProperties object to get data from
 	 */
 	public static String addAmmoInfo(GunProperties atr){
-		return StatCollector.translateToLocal(Unlocalized.STRING_AMMO)+": "+atr.currentAmmo+"/"+atr.maxAmmo;
+		return StatCollector.translateToLocal(Unlocalized.STRING_MAXAMMO)+": "+atr.maxAmmo;
 	}
 	
 	/**
@@ -77,7 +77,6 @@ public class ItemGunInfoUtils {
 		addInfoToList(list, addAmmoInfo(atr));
 		addInfoToList(list, addFireRateInfo(atr));
 		addInfoToList(list, addCamoName(atr));
-		addInfoToList(list, addCreatorName(atr));
 	}
 	
 	public static void addInfoToList(List list, Object object){

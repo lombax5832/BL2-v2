@@ -50,6 +50,7 @@ public class RenderItemGunModel implements IItemRenderer{
 			}
 			case INVENTORY:{
 				renderCylinder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
+				renderInventoryBorder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				break;
 			}
 			default:
@@ -82,6 +83,19 @@ public class RenderItemGunModel implements IItemRenderer{
 			ModelStorage.rarityBeaconModel.renderAll();
 			GL11.glPopMatrix();
 			GL11.glDisable(GL11.GL_BLEND);
+		}
+	}
+	
+	public void renderInventoryBorder(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
+		GunProperties atr = new GunProperties(stack);
+		if(atr.rarity>0){
+			TextureManager render = minecraft.renderEngine;
+			render.bindTexture(TextureLocation.getRarityTextureResource(atr.rarity-1));
+			GL11.glPushMatrix();
+			GL11.glRotatef(angle, xRot, yRot, zRot);
+			GL11.glScalef(1.6F, 0F, .8F);
+			ModelStorage.rarityBorderModel.renderAll();
+			GL11.glPopMatrix();
 		}
 	}
 	

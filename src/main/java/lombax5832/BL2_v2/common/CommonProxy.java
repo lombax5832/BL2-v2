@@ -30,5 +30,7 @@ public class CommonProxy {
 	}
 
 	public void addModels() {}
+
+	public void registerRenderTickHandler() {}
 	
 }

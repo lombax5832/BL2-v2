@@ -42,6 +42,8 @@ public class ItemGun extends ItemBL2{
 	        
 	        ItemGunUtils.handleShotLastTick(atr, (EntityPlayer) entity);
 	        
+	        if(atr.currentAmmo == 0)
+	        	atr.currentAmmo = atr.maxAmmo;
 			
 			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
 			

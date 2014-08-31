@@ -17,6 +17,8 @@ public class ModelStorage {
 	
 	public static IModelCustom rarityBeaconModel = AdvancedModelLoader.loadModel(ModelLocation.rarityBeaconModel);
 	
+	public static IModelCustom rarityBorderModel = AdvancedModelLoader.loadModel(ModelLocation.rarityBorderModel);
+	
 	static ArrayList models = new ArrayList();
 	
 	public static void addModel(ResourceLocation location){

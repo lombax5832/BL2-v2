@@ -45,9 +45,10 @@ public class ItemGunUtils {
 	 */
 	public static void fireGun(GunProperties atr, EntityPlayer entity){
 		atr.currentAmmo--;
-		entity.rotationPitch -= 8F;
-		atr.recoilCushion += 8F;
+		entity.rotationPitch -= 4F;
+		atr.recoilCushion += 4F;
 		System.out.println(atr.currentAmmo);
+//		atr.shotLastTickTicker = 0;
 	}
 	
 	/**
@@ -60,8 +61,6 @@ public class ItemGunUtils {
 		
 		if(isRightClicking(atr, entity)){
 			atr.shotLastTickTicker = 0;
-		}else{
-			handleRecoilCushion(atr,entity);
 		}
 		
 		if(atr.shotLastTickTicker<5){
@@ -70,6 +69,7 @@ public class ItemGunUtils {
 		
 		if(atr.shotLastTickTicker==5){
 			atr.shotLastTick = false;
+			handleRecoilCushion(atr,entity);
 		}else{
 			atr.shotLastTick = true;
 			atr.isShooting = false;
@@ -84,7 +84,7 @@ public class ItemGunUtils {
 	 * @return Returns if the mouse was held down in the last 5 ticks
 	 */
 	public static boolean isRightClicking(GunProperties atr, EntityPlayer entity){
-		if(atr.rightClickTicker<8){
+		if(atr.rightClickTicker<5){
 			atr.rightClickTicker++;
 			return true;
 		}

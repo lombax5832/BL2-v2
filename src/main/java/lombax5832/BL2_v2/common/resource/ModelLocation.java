@@ -19,6 +19,8 @@ public class ModelLocation {
 	
 	public static ResourceLocation rarityBeaconModel = new ResourceLocation("bl2_v2:models/RarityBeacon.obj");
 	
+	public static ResourceLocation rarityBorderModel = new ResourceLocation("bl2_v2:models/GunInventoryBorder.obj");
+	
 	public static void addGunModelResource(String path){
 		ResourceLocation toAdd = new ResourceLocation("bl2_v2:models/gunmodels/"+path);
 		gunModels.add(toAdd);

@@ -9,6 +9,7 @@ public class Unlocalized {
 	public static final String STRING_CREATOR = "string.bl2_v2.creator";
 	
 	public static final String STRING_AMMO = "string.bl2_v2.ammo";
+	public static final String STRING_MAXAMMO = "string.bl2_v2.maxAmmo";
 	
 	public static final String STRING_RPM = "string.bl2_v2.rpm";
 	public static final String STRING_SEMI_AUTO = "string.bl2_v2.semi-auto";

@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
  * @author lombax5832
  */
 public class ModItems {
-	
+
 	public static Item itemGun;
 	
 	public static Item itemTemp;

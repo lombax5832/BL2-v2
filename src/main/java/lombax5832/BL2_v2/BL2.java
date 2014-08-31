@@ -35,6 +35,7 @@ public class BL2 {
 		proxy.addTextures();
 		proxy.addModels();
 		proxy.registerItemRenderer();
+		proxy.registerRenderTickHandler();
 	}
 	
 	@EventHandler
