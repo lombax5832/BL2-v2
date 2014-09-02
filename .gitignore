@@ -44,7 +44,6 @@ bin*
 CREDITS-fml.txt
 MinecraftForge-License.txt
 README.txt
-build.gradle
 forge-1.7.10-10.13.0.1198-changelog.txt
 gradlew*
 LICENSE-fml.txt
