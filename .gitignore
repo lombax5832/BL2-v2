@@ -48,3 +48,4 @@ forge-1.7.10-10.13.0.1198-changelog.txt
 gradlew*
 LICENSE-fml.txt
 MinecraftForge-Credits.txt
+gradle/wrapper/gradle-wrapper.properties
