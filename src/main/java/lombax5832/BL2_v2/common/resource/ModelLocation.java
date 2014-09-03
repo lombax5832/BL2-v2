@@ -3,7 +3,7 @@ package lombax5832.BL2_v2.common.resource;
 import java.util.ArrayList;
 
 import lombax5832.BL2_v2.client.model.ModelStorage;
-import lombax5832.BL2_v2.client.model.ModelStorage.ModelStorageProperties;
+import lombax5832.BL2_v2.client.model.ModelStorageProperties;
 import net.minecraft.util.ResourceLocation;
 
 /**

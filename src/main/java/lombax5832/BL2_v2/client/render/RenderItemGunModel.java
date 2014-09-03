@@ -1,20 +1,13 @@
 package lombax5832.BL2_v2.client.render;
 
-import lombax5832.BL2_v2.BL2;
 import lombax5832.BL2_v2.client.model.ModelStorage;
-import lombax5832.BL2_v2.client.model.ModelStorage.ModelStorageProperties;
+import lombax5832.BL2_v2.client.model.ModelStorageProperties;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
 import lombax5832.BL2_v2.common.resource.TextureLocation;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.model.AdvancedModelLoader;
-import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
 
@@ -38,24 +31,21 @@ public class RenderItemGunModel implements IItemRenderer{
 		GunProperties atr = new GunProperties(stack);
 		switch(type){
 			case ENTITY:{
-				ModelStorageProperties modelPropertiesEntity = (ModelStorageProperties) ModelStorage.modelPropertiesEntityList.get(0);
-				renderGun(minecraft, stack, 0, atr, modelPropertiesEntity);
+//				System.out.println(modelPropertiesEntity.angle);
+				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEntityList.get(0));
 				renderRarityBeacon(minecraft, stack, 0,0F,0F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
-				ModelStorageProperties modelPropertiesEntity = (ModelStorageProperties) ModelStorage.modelPropertiesEquippedList.get(0);
-				renderGun(minecraft, stack, 0, atr, modelPropertiesEntity);
+				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedList.get(0));
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON:{
-				ModelStorageProperties modelPropertiesEntity = (ModelStorageProperties) ModelStorage.modelPropertiesEquippedFPList.get(0);
-				renderGun(minecraft, stack, 0, atr, modelPropertiesEntity);
+				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedFPList.get(0));
 				break;
 			}
 			case INVENTORY:{
-				ModelStorageProperties modelPropertiesEntity = (ModelStorageProperties) ModelStorage.modelPropertiesInventoryList.get(0);
-				renderGun(minecraft, stack, 0, atr, modelPropertiesEntity);
+				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesInventoryList.get(0));
 				renderInventoryBorder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				break;
 			}
@@ -68,7 +58,8 @@ public class RenderItemGunModel implements IItemRenderer{
 		TextureManager render = minecraft.renderEngine;
 		render.bindTexture(TextureLocation.getGunTextureResource(atr.camo));
 		GL11.glPushMatrix();
-		GL11.glTranslatef(msp.xPos, msp.yPos, msp.zPos-1);
+//		System.out.println(msp.xPos);
+		GL11.glTranslatef(msp.xPos, msp.yPos, msp.zPos);
 		GL11.glRotatef(msp.angle, msp.xRot, msp.yRot, msp.zRot);
 		ModelStorage.getModel(0).renderAll();
 		GL11.glPopMatrix();

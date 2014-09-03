@@ -1,5 +1,7 @@
 package lombax5832.BL2_v2.common;
 
+import lombax5832.BL2_v2.client.model.ModelStorageProperties;
+import lombax5832.BL2_v2.common.resource.ModelLocation;
 import lombax5832.BL2_v2.common.resource.TextureLocation;
 
 /**
@@ -29,7 +31,7 @@ public class CommonProxy {
 		TextureLocation.addRarityTextureResource("legendary");
 	}
 
-	public void addModels() {}
+	public void addModels(){}
 
 	public void registerRenderTickHandler() {}
 	

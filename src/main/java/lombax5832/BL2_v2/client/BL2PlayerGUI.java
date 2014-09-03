@@ -90,7 +90,7 @@ public class BL2PlayerGUI extends Gui{
 		
 		renderArrow(oX+5,oY+14,ItemGunInfoComparisonLogic.compareValues(atrHand.maxAmmo, atrGround.maxAmmo));
 		
-		System.out.println(ItemGunInfoComparisonLogic.compareValues(atrHand.fireRate, atrGround.fireRate));
+//		System.out.println(ItemGunInfoComparisonLogic.compareValues(atrHand.fireRate, atrGround.fireRate));
 		
 		if(!atrHand.isSemiAuto&&!atrGround.isSemiAuto){
 			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(20-atrHand.fireRate, 20-atrGround.fireRate));

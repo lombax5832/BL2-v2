@@ -1,14 +1,12 @@
 package lombax5832.BL2_v2.client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
-import lombax5832.BL2_v2.client.model.ModelStorage.ModelStorageProperties;
+import lombax5832.BL2_v2.client.model.ModelStorageProperties;
 import lombax5832.BL2_v2.client.render.RenderItemGunModel;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.common.resource.ModelLocation;
-import lombax5832.BL2_v2.common.resource.TextureLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Proxy class to do certain things on the client side
@@ -29,11 +27,7 @@ public class ClientProxy extends CommonProxy{
 	
 	@Override
 	public void addModels(){
-		ModelLocation.addGunModelResource("pistol.obj", 
-				new ModelStorageProperties(-0.5F,0F,-.5F, 0, 0, 1F, 0), 
-				new ModelStorageProperties(1F,1F,1F,110,-1,1,0), 
-				new ModelStorageProperties(.53F,0,1F,15,1,1,2), 
-				new ModelStorageProperties(.5F,-1,-.5F,135,0,1,0));
+		ModelLocation.addGunModelResource("pistol.obj",	new ModelStorageProperties(-0.5F,0F,0.5F, 0F, 0F, 1F, 0F), new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F), new ModelStorageProperties(.53F,0F,1F,15F,1F,1F,2F), new ModelStorageProperties(.5F,-1F,-.5F,135F,0F,1F,0F));
 	}
 	
 	@Override
