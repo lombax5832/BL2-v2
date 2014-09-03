@@ -3,7 +3,7 @@ package lombax5832.BL2_v2.common.resource;
 import java.util.ArrayList;
 
 import lombax5832.BL2_v2.client.model.ModelStorage;
-
+import lombax5832.BL2_v2.client.model.ModelStorage.ModelStorageProperties;
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -21,10 +21,10 @@ public class ModelLocation {
 	
 	public static ResourceLocation rarityBorderModel = new ResourceLocation("bl2_v2:models/GunInventoryBorder.obj");
 	
-	public static void addGunModelResource(String path){
+	public static void addGunModelResource(String path, ModelStorageProperties modelEntity, ModelStorageProperties modelEquipped, ModelStorageProperties modelEquippedFP, ModelStorageProperties modelInventory){
 		ResourceLocation toAdd = new ResourceLocation("bl2_v2:models/gunmodels/"+path);
 		gunModels.add(toAdd);
-		ModelStorage.addModel(toAdd);
+		ModelStorage.addModel(toAdd,modelEntity,modelEquipped,modelEquippedFP,modelInventory);
 	}
 	
 	public static ResourceLocation getGunModelResource(int index){

@@ -36,20 +36,20 @@ public class RenderItemGunModel implements IItemRenderer{
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch(type){
 			case ENTITY:{
-				renderCylinder(minecraft, stack, 0,0F,1F,0F,-0.5F,0F,.5F);
+				renderGun(minecraft, stack, 0,0F,1F,0F,-0.5F,0F,.5F);
 				renderRarityBeacon(minecraft, stack, 0,0F,0F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
-				renderCylinder(minecraft, stack, 110,-1,1,0,1F,1F,1F);
+				renderGun(minecraft, stack, 110,-1,1,0,1F,1F,1F);
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON:{
-				renderCylinder(minecraft, stack, 15F,1F,1F,2F,0.53F,0F,1F);
+				renderGun(minecraft, stack, 15F,1F,1F,2F,0.53F,0F,1F);
 				break;
 			}
 			case INVENTORY:{
-				renderCylinder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
+				renderGun(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				renderInventoryBorder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				break;
 			}
@@ -58,7 +58,7 @@ public class RenderItemGunModel implements IItemRenderer{
 		}
 	}
 	
-	public void renderCylinder(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
+	public void renderGun(Minecraft minecraft, ItemStack stack, float angle, float xRot,float yRot, float zRot, float xPos, float yPos, float zPos){
 		GunProperties atr = new GunProperties(stack);
 		TextureManager render = minecraft.renderEngine;
 		render.bindTexture(TextureLocation.getGunTextureResource(atr.camo));
