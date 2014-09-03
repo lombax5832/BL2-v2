@@ -21,10 +21,10 @@ public class ModelStorage {
 	
 	static ArrayList models = new ArrayList();
 	
-	static ArrayList modelPropertiesEntityList = new ArrayList();
-	static ArrayList modelPropertiesEquippedList = new ArrayList();
-	static ArrayList modelPropertiesEquippedFPList = new ArrayList();
-	static ArrayList modelPropertiesInventoryList = new ArrayList();
+	public static ArrayList modelPropertiesEntityList = new ArrayList();
+	public static ArrayList modelPropertiesEquippedList = new ArrayList();
+	public static ArrayList modelPropertiesEquippedFPList = new ArrayList();
+	public static ArrayList modelPropertiesInventoryList = new ArrayList();
 	
 	public static void addModel(ResourceLocation location, ModelStorageProperties modelPropertiesEntity, ModelStorageProperties modelPropertiesEquipped, ModelStorageProperties modelPropertiesEquippedFP, ModelStorageProperties modelPropertiesInventory){
 		models.add(AdvancedModelLoader.loadModel(location));
