@@ -117,6 +117,8 @@ public class ItemGun extends ItemBL2{
 		
 		public int rarity = 0;
 		
+		public int gunType = 0;
+		
 		public int currentAmmo = 0;
 		public int maxAmmo = 0;
 		
@@ -158,6 +160,8 @@ public class ItemGun extends ItemBL2{
 	        
 	        tag.setInteger("rarity", rarity);
 	        
+	        tag.setInteger("gunType", gunType);
+	        
 	        tag.setInteger("currentAmmo", currentAmmo);
 	        tag.setInteger("maxAmmo", maxAmmo);
 	        
@@ -196,6 +200,8 @@ public class ItemGun extends ItemBL2{
             camo = tag.getInteger("camo");
             
             rarity = tag.getInteger("rarity");
+            
+            gunType = tag.getInteger("gunType");
             
             currentAmmo = tag.getInteger("currentAmmo");
             maxAmmo = tag.getInteger("maxAmmo");

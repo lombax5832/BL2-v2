@@ -32,20 +32,20 @@ public class RenderItemGunModel implements IItemRenderer{
 		switch(type){
 			case ENTITY:{
 //				System.out.println(modelPropertiesEntity.angle);
-				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEntityList.get(0));
+				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEntityList.get(atr.gunType));
 				renderRarityBeacon(minecraft, stack, 0,0F,0F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
-				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedList.get(0));
+				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedList.get(atr.gunType));
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON:{
-				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedFPList.get(0));
+				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedFPList.get(atr.gunType));
 				break;
 			}
 			case INVENTORY:{
-				renderGun(minecraft, stack, 0, atr, (ModelStorageProperties) ModelStorage.modelPropertiesInventoryList.get(0));
+				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesInventoryList.get(atr.gunType));
 				renderInventoryBorder(minecraft, stack, 135F,0F,1F,0F,0.5F,-1F,-0.5F);
 				break;
 			}
@@ -54,7 +54,7 @@ public class RenderItemGunModel implements IItemRenderer{
 		}
 	}
 	
-	public void renderGun(Minecraft minecraft, ItemStack stack, int index, GunProperties atr, ModelStorageProperties msp){
+	public void renderGun(Minecraft minecraft, ItemStack stack, GunProperties atr, ModelStorageProperties msp){
 		TextureManager render = minecraft.renderEngine;
 		render.bindTexture(TextureLocation.getGunTextureResource(atr.camo));
 		GL11.glPushMatrix();
