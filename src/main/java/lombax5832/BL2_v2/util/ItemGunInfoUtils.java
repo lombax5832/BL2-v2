@@ -3,6 +3,7 @@ package lombax5832.BL2_v2.util;
 import java.util.List;
 
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
+import lombax5832.BL2_v2.common.resource.ModelLocation;
 import lombax5832.BL2_v2.common.resource.TextureLocation;
 import lombax5832.BL2_v2.lib.Colors;
 import lombax5832.BL2_v2.lib.Unlocalized;
@@ -57,7 +58,7 @@ public class ItemGunInfoUtils {
 			StringBuilder gunName = new StringBuilder();
 			if(atr.rarity>0)
 				gunName.append(Colors.rarityColors[atr.rarity-1]);
-			gunName.append(StatCollector.translateToLocal(stack.getUnlocalizedName()+".name"));
+			gunName.append(StatCollector.translateToLocal(ModelLocation.getGunModelName(atr.gunType)+".name"));
 			String name = gunName.toString();
 			return name;
 	}

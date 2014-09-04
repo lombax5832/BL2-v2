@@ -17,4 +17,6 @@ public class Unlocalized {
 	public static final String STRING_CAMO = "string.bl2_v2.camo";
 	
 	public static final String TEXTURE_PREFIX = "texture.bl2_v2.";
+	
+	public static final String MODEL_PREFIX = "item.bl2_v2.";
 }

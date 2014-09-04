@@ -4,6 +4,7 @@ itemGroup.bl2_v2=Borderlands 2
 # Items
 item.bl2_v2.GunDefault.name=Default Gun
 item.bl2_v2.itemTemp.name=Admin Gun Gen
+item.bl2_v2.pistol.name=Pistol
 
 # Strings
 string.bl2_v2.creator=Creator

@@ -27,7 +27,7 @@ public class ClientProxy extends CommonProxy{
 	
 	@Override
 	public void addModels(){
-		ModelLocation.addGunModelResource("pistol.obj",	new ModelStorageProperties(-0.5F,0F,0.5F, 0F, 0F, 1F, 0F), new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F), new ModelStorageProperties(.53F,0F,1F,15F,1F,1F,2F), new ModelStorageProperties(.5F,-1F,-.5F,135F,0F,1F,0F));
+		ModelLocation.addGunModelResource("pistol",	new ModelStorageProperties(-0.5F,0F,0.5F, 0F, 0F, 1F, 0F), new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F), new ModelStorageProperties(.53F,0F,1F,15F,1F,1F,2F), new ModelStorageProperties(.5F,-1F,-.5F,135F,0F,1F,0F));
 	}
 	
 	@Override
