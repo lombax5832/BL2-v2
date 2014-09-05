@@ -16,6 +16,7 @@ public class ItemGunGenerators {
 		ItemStack stack = new ItemStack(ModItems.itemGun);
 		GunProperties atr = new GunProperties(stack);
 		
+		atr.gunType = 1;
 		atr.camo = RandomRange.randomRange(0, TextureLocation.getLastGunTextureIndex());
 		atr.isSemiAuto = RandomRange.randomBoolean(50);
 		atr.rarity = RandomRange.randomRange(0,4);

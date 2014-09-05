@@ -59,9 +59,10 @@ public class RenderItemGunModel implements IItemRenderer{
 		render.bindTexture(TextureLocation.getGunTextureResource(atr.camo));
 		GL11.glPushMatrix();
 //		System.out.println(msp.xPos);
+		GL11.glScalef(msp.xScale, msp.yScale, msp.zScale);
 		GL11.glTranslatef(msp.xPos, msp.yPos, msp.zPos);
 		GL11.glRotatef(msp.angle, msp.xRot, msp.yRot, msp.zRot);
-		ModelStorage.getModel(0).renderAll();
+		ModelStorage.getModel(atr.gunType).renderAll();
 		GL11.glPopMatrix();
 	}
 	
