@@ -31,9 +31,10 @@ public class ClientProxy extends CommonProxy{
 				new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F, 1F, 1F, 1F), 
 				new ModelStorageProperties(.53F,0F,1F,15F,1F,1F,2F, 1F, 1F, 1F), 
 				new ModelStorageProperties(.5F,-1F,-.5F,135F,0F,1F,0F, 1F, 1F, 1F));
-		ModelLocation.addGunModelResource("assaultRifle",	new ModelStorageProperties(-1F,0F,1F, 0F, 0F, 1F, 0F, 1F, 1F, 1F), 
+		
+		ModelLocation.addGunModelResource("assaultRifle",	new ModelStorageProperties(-1F,0F,1F, 0F, 0F, 1F, 0F, .75F, .75F, .75F), 
 				new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F, 1F, 1F, 1F), 
-				new ModelStorageProperties(.53F,0F,1F,15F,2F,1F,3F, 1F, 1F, 1F), 
+				new ModelStorageProperties(.53F,0F,1.5F,15F,2F,1F,3F, 1F, 1F, 1F), 
 				new ModelStorageProperties(.9F,-1F,-.5F,135F,0F,1F,0F, 0.65F, 1F, 1F));
 	}
 	
