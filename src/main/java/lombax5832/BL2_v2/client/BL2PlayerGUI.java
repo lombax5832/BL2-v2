@@ -34,6 +34,9 @@ public class BL2PlayerGUI extends Gui{
 	private final static ResourceLocation gunPropertiesCenterTexture = new ResourceLocation("bl2_v2:textures/gui/gunPropertiesCenter.png");
 	private final static ResourceLocation gunPropertiesBottomTexture = new ResourceLocation("bl2_v2:textures/gui/gunPropertiesBottom.png");
 	
+	private final static ResourceLocation gunPropertiesAmmoBorderTexture = new ResourceLocation("bl2_v2:textures/gui/gunPropertiesAmmoBorder.png");
+	private final static ResourceLocation gunPropertiesAmmoFillingTexture = new ResourceLocation("bl2_v2:textures/gui/gunPropertiesAmmoFilling.png");
+	
 	private final static ResourceLocation[] gunPropertiesArrows = {new ResourceLocation("bl2_v2:textures/gui/arrowRedDown.png"),new ResourceLocation("bl2_v2:textures/gui/arrowGreenUp.png"), new ResourceLocation("bl2_v2:textures/gui/arrowEqualSign.png")};
 
 	private FontRenderer fr;
@@ -71,7 +74,10 @@ public class BL2PlayerGUI extends Gui{
 				ItemStack stackInHand = player.getHeldItem();
 				renderLookAtGunComparisonInfo(itemGun, stackInHand, 10, (width/4)-14);
 			}
-//			renderLookAtGunComparisonInfo(stack, );
+		}
+		
+		if(player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.itemGun){
+			renderGunAmmo(width/2+16,height-60,10,10);
 		}
 	}
 	
@@ -189,6 +195,28 @@ public class BL2PlayerGUI extends Gui{
 		
 		this.mc.getTextureManager().bindTexture(gunPropertiesBottomTexture);
 		this.drawTexturedModalRect(0, 0, 0, 0, 66, 9);
+		GL11.glScalef(1.0F, 1.0F, 1.0F);
+		GL11.glShadeModel(GL11.GL_FLAT);
+		GL11.glPopMatrix();
+	}
+	
+	public void renderGunAmmo(int xPos, int yPos, int maxAmmo, int currentAmmo){
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		
+		GL11.glPushMatrix();
+		GL11.glTranslatef(xPos, yPos, 0);
+		GL11.glShadeModel(GL11.GL_SMOOTH);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
+		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoFillingTexture);
+		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoBorderTexture);
+		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);
 		GL11.glScalef(1.0F, 1.0F, 1.0F);
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glPopMatrix();
