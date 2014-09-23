@@ -77,7 +77,8 @@ public class BL2PlayerGUI extends Gui{
 		}
 		
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.itemGun){
-			renderGunAmmo(width/2+16,height-60,10,10);
+			GunProperties atr = new GunProperties(player.getHeldItem());
+			renderGunAmmo(width/2+16,height-60,atr.maxAmmo,atr.currentAmmo);
 		}
 	}
 	
@@ -213,7 +214,7 @@ public class BL2PlayerGUI extends Gui{
 		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.5F);
 		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoFillingTexture);
-		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);
+		this.drawTexturedModalRect(0, 0, 0, 0, (int) ((float)((float)currentAmmo/(float)maxAmmo)*66F), 18);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoBorderTexture);
 		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);
