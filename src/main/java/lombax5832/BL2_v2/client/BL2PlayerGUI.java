@@ -202,6 +202,9 @@ public class BL2PlayerGUI extends Gui{
 	}
 	
 	public void renderGunAmmo(int xPos, int yPos, int maxAmmo, int currentAmmo){
+		
+		String ammoString = currentAmmo+"/"+maxAmmo;
+		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		
@@ -218,6 +221,9 @@ public class BL2PlayerGUI extends Gui{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoBorderTexture);
 		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);
+		
+		GL11.glTranslatef(0, 0, 1);
+		WriteString.shadowString(fr, ammoString, width/2 - fr.getStringWidth(ammoString)/2 - 290, 1, 0xFFFFFF);
 		GL11.glScalef(1.0F, 1.0F, 1.0F);
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glPopMatrix();
