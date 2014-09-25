@@ -24,6 +24,7 @@ public class CommonProxy {
 		TextureLocation.addGunTextureResource("blueTiger");
 		TextureLocation.addGunTextureResource("gold");
 		TextureLocation.addGunTextureResource("rust");
+		TextureLocation.addGunTextureResource("redTiger");
 		
 		TextureLocation.addRarityTextureResource("uncommon");
 		TextureLocation.addRarityTextureResource("rare");
