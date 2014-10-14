@@ -72,7 +72,7 @@ public class BL2PlayerGUI extends Gui{
 			
 			if(player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.itemGun){
 				ItemStack stackInHand = player.getHeldItem();
-				renderLookAtGunComparisonInfo(itemGun, stackInHand, 10, (width/4)-14);
+				renderLookAtGunComparisonInfo(itemGun, stackInHand, 10, (height/3)-14);
 			}
 		}
 		
@@ -97,16 +97,9 @@ public class BL2PlayerGUI extends Gui{
 		
 		renderArrow(oX+5,oY+14,ItemGunInfoComparisonLogic.compareValues(atrHand.maxAmmo, atrGround.maxAmmo));
 		
-//		System.out.println(ItemGunInfoComparisonLogic.compareValues(atrHand.fireRate, atrGround.fireRate));
-		
 		if(!atrHand.isSemiAuto&&!atrGround.isSemiAuto){
 			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(20-atrHand.fireRate, 20-atrGround.fireRate));
 		}
-		
-//		renderArrow(oX,oY,1);
-		
-//		ItemGunInfoComparisonLogic.compareValues(atrGround.maxAmmo, atrHand.maxAmmo);
-		
 	}
 	
 	public void renderLookAtBox(ItemStack stack, int oX, int oY){

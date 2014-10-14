@@ -2,6 +2,7 @@ package lombax5832.BL2_v2.client;
 
 import lombax5832.BL2_v2.client.model.ModelStorageProperties;
 import lombax5832.BL2_v2.client.render.RenderItemGunModel;
+import lombax5832.BL2_v2.client.settings.KeyBindingBL2;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.common.resource.ModelLocation;
@@ -36,6 +37,11 @@ public class ClientProxy extends CommonProxy{
 				new ModelStorageProperties(1F,1F,1F,110F,-1F,1F,0F, 1F, 1F, 1F), 
 				new ModelStorageProperties(.53F,0F,1.5F,15F,2F,1F,3F, 1F, 1F, 1F), 
 				new ModelStorageProperties(.9F,-1F,-.5F,135F,0F,1F,0F, 0.65F, 1F, 1F));
+	}
+	
+	@Override
+	public void addKeyBindings(){
+		KeyBindingBL2.init();
 	}
 	
 	@Override

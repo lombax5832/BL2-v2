@@ -1,8 +1,11 @@
 package lombax5832.BL2_v2;
 
+import lombax5832.BL2_v2.client.settings.KeyInputHandlerBL2;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.lib.Strings;
+import lombax5832.BL2_v2.network.BL2Message;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -10,6 +13,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * Core class of BL2 v2!
@@ -22,6 +28,8 @@ public class BL2 {
 	@SidedProxy(clientSide = "lombax5832.BL2_v2.client.ClientProxy", serverSide="lombax5832.BL2_v2.common.CommonProxy")
 	public static CommonProxy proxy;
 	
+	public static SimpleNetworkWrapper networkBL2;
+	
 	@Instance(Strings.MOD_ID)
 	public static BL2 instance;
 	
@@ -29,6 +37,8 @@ public class BL2 {
 	public void preInit(FMLPreInitializationEvent event){
 		ModItems.initItems();
 		proxy.addModels();
+		networkBL2 = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MOD_ID);
+		networkBL2.registerMessage(BL2Message.Handler.class, BL2Message.class, 0, Side.SERVER);
 	}
 	
 	@EventHandler
@@ -36,6 +46,8 @@ public class BL2 {
 		proxy.addTextures();
 		proxy.registerItemRenderer();
 		proxy.registerRenderTickHandler();
+		proxy.addKeyBindings();
+		FMLCommonHandler.instance().bus().register(new KeyInputHandlerBL2());
 	}
 	
 	@EventHandler
