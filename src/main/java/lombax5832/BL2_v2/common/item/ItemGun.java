@@ -42,8 +42,9 @@ public class ItemGun extends ItemBL2{
 	        
 	        ItemGunUtils.handleShotLastTick(atr, (EntityPlayer) entity);
 	        
-	        if(atr.currentAmmo == 0)
-	        	atr.currentAmmo = atr.maxAmmo;
+	        
+//	        if(atr.currentAmmo == 0)
+//	        	atr.currentAmmo = atr.maxAmmo;
 			
 			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
 			
@@ -96,7 +97,11 @@ public class ItemGun extends ItemBL2{
     	return true;
     }
 
-
+    public static void reload(ItemStack stack){
+    	GunProperties atr = new GunProperties(stack);
+    	atr.currentAmmo = atr.maxAmmo;
+    	atr.save(stack);
+    }
 	
 	/**
 	 * Subclass used to store NBT data in the item
@@ -124,6 +129,9 @@ public class ItemGun extends ItemBL2{
 		
 		public int fireTicker = 0;
 		public int fireRate = 0;
+		
+		public int reloadTicker = 20;
+		public int reloadTotal = 20;
 		
 		public int shotLastTickTicker = 0;
 		
@@ -168,6 +176,9 @@ public class ItemGun extends ItemBL2{
 	        tag.setInteger("fireTicker", fireTicker);
 	        tag.setInteger("fireRate", fireRate);
 	        
+	        tag.setInteger("reloadTicker", reloadTicker);
+	        tag.setInteger("reloadTotal", reloadTotal);
+	        
 	        tag.setInteger("shotLastTickTicker", shotLastTickTicker);
 	        
 	        tag.setInteger("rightClickTicker", rightClickTicker);
@@ -208,6 +219,9 @@ public class ItemGun extends ItemBL2{
             
             fireTicker = tag.getInteger("fireTicker");
             fireRate = tag.getInteger("fireRate");
+            
+            reloadTicker = tag.getInteger("reloadTicker");
+            reloadTotal = tag.getInteger("reloadTotal");
             
             shotLastTickTicker = tag.getInteger("shotLastTickTicker");
             

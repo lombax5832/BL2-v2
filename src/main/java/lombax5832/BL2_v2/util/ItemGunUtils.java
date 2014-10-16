@@ -47,7 +47,6 @@ public class ItemGunUtils {
 		atr.currentAmmo--;
 		entity.rotationPitch -= 4F;
 		atr.recoilCushion += 4F;
-		System.out.println(atr.currentAmmo);
 //		atr.shotLastTickTicker = 0;
 	}
 	
