@@ -16,7 +16,7 @@ public class ItemGunUtils {
 	 * @return Returns if the gun can shoot or not
 	 */
 	public static boolean canShoot(GunProperties atr, EntityPlayer entity){
-		if(isRightClicking(atr,entity)&&atr.currentAmmo>0)
+		if(isRightClicking(atr,entity)&&atr.currentAmmo>0&&!atr.reloading)
 			return true;
 		return false;
 	}

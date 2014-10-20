@@ -78,7 +78,7 @@ public class BL2PlayerGUI extends Gui{
 		
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() == ModItems.itemGun){
 			GunProperties atr = new GunProperties(player.getHeldItem());
-			renderGunAmmo(width/2+16,height-60,atr.maxAmmo,atr.currentAmmo);
+			renderGunAmmo(width/2+16,height-60,atr.maxAmmo,atr.currentAmmo,atr.reloadTotal,atr.reloadTicker,atr.reloading);
 		}
 	}
 	
@@ -194,9 +194,10 @@ public class BL2PlayerGUI extends Gui{
 		GL11.glPopMatrix();
 	}
 	
-	public void renderGunAmmo(int xPos, int yPos, int maxAmmo, int currentAmmo){
+	public void renderGunAmmo(int xPos, int yPos, int maxAmmo, int currentAmmo, int reloadMax, int reloadTicker, boolean reloading){
 		
-		String ammoString = currentAmmo+"/"+maxAmmo;
+		String ammoString = "";
+		int ammoBarVal = 0;
 		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_LIGHTING);
@@ -210,7 +211,17 @@ public class BL2PlayerGUI extends Gui{
 		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
 		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoFillingTexture);
-		this.drawTexturedModalRect(0, 0, 0, 0, (int) ((float)((float)currentAmmo/(float)maxAmmo)*66F), 18);
+		
+		
+		if(!reloading){
+			ammoBarVal = (int) ((float)((float)currentAmmo/(float)maxAmmo)*66F);
+			ammoString = currentAmmo+"/"+maxAmmo;
+		}else{
+			ammoBarVal = (int) ((float)((float)reloadTicker/(float)reloadMax)*66F);
+			ammoString = (float)Math.round(((float)(reloadMax-reloadTicker)/(float)reloadMax) * 10) / 10+" secs";
+		}
+		
+		this.drawTexturedModalRect(0, 0, 0, 0, ammoBarVal, 18);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(gunPropertiesAmmoBorderTexture);
 		this.drawTexturedModalRect(0, 0, 0, 0, 66, 18);

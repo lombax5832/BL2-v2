@@ -34,17 +34,27 @@ public class ItemGun extends ItemBL2{
 		
 		GunProperties atr = new GunProperties(stack);
 		
+		if(atr.currentAmmo == 0&&!atr.reloading){
+        	atr.reloading = true;
+        	atr.reloadTicker = 0;
+        }
+		
 		if(((EntityPlayer) entity).getHeldItem() != null && ((EntityPlayer) entity).getHeldItem() == stack){
 	        
+			if(atr.reloading){
+				if(atr.reloadTicker<atr.reloadTotal){
+					atr.reloadTicker++;
+				}else{
+					atr.currentAmmo=atr.maxAmmo;
+					atr.reloading=false;
+				}
+			}
+			
 	        if(ItemGunUtils.canShoot(atr, (EntityPlayer) entity)){
 	        	ItemGunUtils.gunShoot(atr, (EntityPlayer) entity);
 	        }
 	        
 	        ItemGunUtils.handleShotLastTick(atr, (EntityPlayer) entity);
-	        
-	        
-//	        if(atr.currentAmmo == 0)
-//	        	atr.currentAmmo = atr.maxAmmo;
 			
 			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
 			
@@ -99,7 +109,8 @@ public class ItemGun extends ItemBL2{
 
     public static void reload(ItemStack stack){
     	GunProperties atr = new GunProperties(stack);
-    	atr.currentAmmo = atr.maxAmmo;
+    	atr.reloading = true;
+    	atr.reloadTicker = 0;
     	atr.save(stack);
     }
 	
@@ -132,6 +143,7 @@ public class ItemGun extends ItemBL2{
 		
 		public int reloadTicker = 20;
 		public int reloadTotal = 20;
+		public boolean reloading = false;
 		
 		public int shotLastTickTicker = 0;
 		
@@ -178,6 +190,7 @@ public class ItemGun extends ItemBL2{
 	        
 	        tag.setInteger("reloadTicker", reloadTicker);
 	        tag.setInteger("reloadTotal", reloadTotal);
+	        tag.setBoolean("reloading", reloading);
 	        
 	        tag.setInteger("shotLastTickTicker", shotLastTickTicker);
 	        
@@ -222,6 +235,7 @@ public class ItemGun extends ItemBL2{
             
             reloadTicker = tag.getInteger("reloadTicker");
             reloadTotal = tag.getInteger("reloadTotal");
+            reloading = tag.getBoolean("reloading");
             
             shotLastTickTicker = tag.getInteger("shotLastTickTicker");
             
