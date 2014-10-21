@@ -16,18 +16,19 @@ public class ItemGunGenerators {
 		ItemStack stack = new ItemStack(ModItems.itemGun);
 		GunProperties atr = new GunProperties(stack);
 		
-		atr.gunType = 1;
+		atr.gunType = RandomRange.randomRange(0, 1);
 		atr.camo = RandomRange.randomRange(0, TextureLocation.getLastGunTextureIndex());
 		atr.isSemiAuto = RandomRange.randomBoolean(50);
 		atr.rarity = RandomRange.randomRange(0,4);
 		System.out.println(atr.rarity);
 		atr.maxAmmo = RandomRange.randomRange(10, 31);
 		atr.fireRate = RandomRange.randomRange(2, 10);
+		atr.reloadTotal = RandomRange.randomRange(20, 80);
 //		atr.fireRate = 1;
 		atr.shotLastTickTicker = 5;
 		atr.fireTicker = atr.fireRate;
 		atr.currentAmmo = atr.maxAmmo;
-		
+		atr.reloadTicker = atr.reloadTotal;
 		atr.save(stack);
 		return stack;
 	}

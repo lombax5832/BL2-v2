@@ -14,6 +14,7 @@ string.bl2_v2.ammo=Ammo
 string.bl2_v2.maxAmmo=Max Ammo
 string.bl2_v2.rpm=RPM
 string.bl2_v2.semi-auto=Semi-Automatic
+string.bl2_v2.reload=Reload
 
 # Textures
 texture.bl2_v2.winter=Winter
@@ -22,3 +23,4 @@ texture.bl2_v2.desert=Desert
 texture.bl2_v2.blueTiger=Blue Tiger
 texture.bl2_v2.gold=Gold
 texture.bl2_v2.rust=Worn
+texture.bl2_v2.redTiger=Red Tiger

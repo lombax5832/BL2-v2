@@ -14,6 +14,8 @@ public class Unlocalized {
 	public static final String STRING_RPM = "string.bl2_v2.rpm";
 	public static final String STRING_SEMI_AUTO = "string.bl2_v2.semi-auto";
 	
+	public static final String STRING_RELOAD = "string.bl2_v2.reload";
+	
 	public static final String STRING_CAMO = "string.bl2_v2.camo";
 	
 	public static final String TEXTURE_PREFIX = "texture.bl2_v2.";

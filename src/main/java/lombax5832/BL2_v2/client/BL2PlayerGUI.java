@@ -99,7 +99,9 @@ public class BL2PlayerGUI extends Gui{
 		
 		if(!atrHand.isSemiAuto&&!atrGround.isSemiAuto){
 			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(20-atrHand.fireRate, 20-atrGround.fireRate));
-		}
+			renderArrow(oX+5,oY+32,ItemGunInfoComparisonLogic.compareValues(atrHand.reloadTotal, atrGround.reloadTotal));
+		}else
+			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(atrHand.reloadTotal, atrGround.reloadTotal));
 	}
 	
 	public void renderLookAtBox(ItemStack stack, int oX, int oY){
@@ -218,7 +220,7 @@ public class BL2PlayerGUI extends Gui{
 			ammoString = currentAmmo+"/"+maxAmmo;
 		}else{
 			ammoBarVal = (int) ((float)((float)reloadTicker/(float)reloadMax)*66F);
-			ammoString = (float)Math.round(((float)(reloadMax-reloadTicker)/(float)reloadMax) * 10) / 10+" secs";
+			ammoString = (float)Math.round((((float)(reloadMax-reloadTicker)/(float)reloadMax)*reloadMax/20) * 10) / 10+" secs";
 		}
 		
 		this.drawTexturedModalRect(0, 0, 0, 0, ammoBarVal, 18);

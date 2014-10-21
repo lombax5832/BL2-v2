@@ -64,6 +64,14 @@ public class ItemGunInfoUtilsForRender {
 	}
 	
 	/**
+	 * Adds the reload time info to the tooltip
+	 * @param atr GunProperties object to get data from
+	 */
+	public static String addReloadInfo(GunProperties atr){
+		return StatCollector.translateToLocal(Unlocalized.STRING_RELOAD)+": "+(float)Math.round((float)((float)atr.reloadTotal/(float)20)*10)/10+" seconds";
+	}
+	
+	/**
 	 * Adds the name of the camouflage to the description
 	 * @param list List to add string to
 	 * @param atr GunProperties object to get data from
@@ -77,6 +85,7 @@ public class ItemGunInfoUtilsForRender {
 		addInfoToList(list, addGunName(atr, stack));
 		addInfoToList(list, addAmmoInfo(atr));
 		addInfoToList(list, addFireRateInfo(atr));
+		addInfoToList(list, addReloadInfo(atr));
 		addInfoToList(list, addCamoName(atr));
 	}
 	
