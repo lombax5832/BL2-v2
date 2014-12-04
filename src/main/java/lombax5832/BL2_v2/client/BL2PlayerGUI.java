@@ -97,11 +97,10 @@ public class BL2PlayerGUI extends Gui{
 		
 		renderArrow(oX+5,oY+14,ItemGunInfoComparisonLogic.compareValues(atrHand.maxAmmo, atrGround.maxAmmo));
 		
-		if(!atrHand.isSemiAuto&&!atrGround.isSemiAuto){
+		if(!atrHand.isSemiAuto&&!atrGround.isSemiAuto)
 			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(20-atrHand.fireRate, 20-atrGround.fireRate));
-			renderArrow(oX+5,oY+32,ItemGunInfoComparisonLogic.compareValues(atrHand.reloadTotal, atrGround.reloadTotal));
-		}else
-			renderArrow(oX+5,oY+23,ItemGunInfoComparisonLogic.compareValues(atrHand.reloadTotal, atrGround.reloadTotal));
+		
+		renderArrow(oX+5,oY+32,ItemGunInfoComparisonLogic.compareValues(atrGround.reloadTotal, atrHand.reloadTotal));
 	}
 	
 	public void renderLookAtBox(ItemStack stack, int oX, int oY){

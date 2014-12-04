@@ -51,7 +51,6 @@ public class BL2Message implements IMessage{
 					if(list.get(i) instanceof EntityPlayer){
 						EntityPlayerMP player = (EntityPlayerMP) list.get(i);
 						if(player.getEntityId()==message.playerId){
-							System.out.println(player.getDisplayName()+" hit reload");
 							if(player.getItemInUse()!=null&&player.getItemInUse().getItem() instanceof ItemGun){
 								ItemStack stack = player.getItemInUse();
 								ItemGun.reload(stack);

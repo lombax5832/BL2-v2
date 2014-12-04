@@ -16,7 +16,6 @@ public class KeyInputHandlerBL2 {
 				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 				if(player.getItemInUse()!=null && player.getItemInUse().getItem() instanceof ItemGun){
 					BL2.networkBL2.sendToServer(new BL2Message(1,player.getEntityId()));
-					System.out.println("Gun in Hand!");
 				}
 			}
 		}

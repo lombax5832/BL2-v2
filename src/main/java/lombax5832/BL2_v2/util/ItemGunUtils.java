@@ -1,8 +1,9 @@
 package lombax5832.BL2_v2.util;
 
-import net.minecraft.entity.player.EntityPlayer;
-import lombax5832.BL2_v2.BL2;
+import lombax5832.BL2_v2.common.entity.EntityBullet;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 
 /**
  * Utility classes to reduce clutter in the main ItemGun class
@@ -10,6 +11,8 @@ import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
  * @author lombax5832
  */
 public class ItemGunUtils {
+	
+	static World world;
 	
 	/**
 	 * @param atr GunProperties object to get data from
@@ -44,9 +47,11 @@ public class ItemGunUtils {
 	 * @param entity EntityPlayer to get data from
 	 */
 	public static void fireGun(GunProperties atr, EntityPlayer entity){
+		world = entity.worldObj;
 		atr.currentAmmo--;
 		entity.rotationPitch -= 4F;
 		atr.recoilCushion += 4F;
+		world.spawnEntityInWorld(new EntityBullet(world,entity));
 //		atr.shotLastTickTicker = 0;
 	}
 	
