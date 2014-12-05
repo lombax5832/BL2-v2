@@ -1,7 +1,9 @@
 package lombax5832.BL2_v2.util;
 
+import lombax5832.BL2_v2.BL2;
 import lombax5832.BL2_v2.common.entity.EntityBullet;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
+import lombax5832.BL2_v2.network.BL2FireGunMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
@@ -49,9 +51,11 @@ public class ItemGunUtils {
 	public static void fireGun(GunProperties atr, EntityPlayer entity){
 		world = entity.worldObj;
 		atr.currentAmmo--;
-		entity.rotationPitch -= 4F;
-		atr.recoilCushion += 4F;
-		world.spawnEntityInWorld(new EntityBullet(world,entity));
+//		world.spawnEntityInWorld(new EntityBullet(world,entity));
+		entity.rotationPitch -= 2F;
+		atr.recoilCushion += 2F;
+		if(world.isRemote)
+			BL2.networkBL2.sendToServer(new BL2FireGunMessage(entity.getEntityId()));
 //		atr.shotLastTickTicker = 0;
 	}
 	

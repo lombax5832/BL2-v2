@@ -20,11 +20,27 @@ public class EntityBullet extends EntityThrowable{
 		super(world,posX,posY,posZ);
 	}
 
+	protected float getGravityVelocity(){
+		return 0;
+	}
+	
+	public void onUpdate(){
+		super.onUpdate();
+
+	}
+	
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
-		
 		setDead();
-//		worldObj.setBlockToAir((int)this.posX, (int)this.posY, (int)this.posZ);
+		switch(mop.typeOfHit){
+		case BLOCK: worldObj.setBlockToAir(mop.blockX,mop.blockY,mop.blockZ);
+			break;
+		case ENTITY: 
+			break;
+		default:
+			break;
+			
+		}
 		
 	}
 

@@ -4,7 +4,8 @@ import lombax5832.BL2_v2.client.settings.KeyInputHandlerBL2;
 import lombax5832.BL2_v2.common.CommonProxy;
 import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.lib.Strings;
-import lombax5832.BL2_v2.network.BL2Message;
+import lombax5832.BL2_v2.network.BL2FireGunMessage;
+import lombax5832.BL2_v2.network.BL2ReloadMessage;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -38,7 +39,8 @@ public class BL2 {
 		ModItems.initItems();
 		proxy.addModels();
 		networkBL2 = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MOD_ID);
-		networkBL2.registerMessage(BL2Message.Handler.class, BL2Message.class, 0, Side.SERVER);
+		networkBL2.registerMessage(BL2ReloadMessage.Handler.class, BL2ReloadMessage.class, 0, Side.SERVER);
+		networkBL2.registerMessage(BL2FireGunMessage.Handler.class, BL2FireGunMessage.class, 1, Side.SERVER);
 	}
 	
 	@EventHandler

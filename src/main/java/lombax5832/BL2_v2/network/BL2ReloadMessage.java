@@ -14,15 +14,15 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class BL2Message implements IMessage{
+public class BL2ReloadMessage implements IMessage{
 
 	private int reload;
 	
 	private int playerId;
 	
-	public BL2Message(){};
+	public BL2ReloadMessage(){};
 	
-	public BL2Message(int reload, int playerId){
+	public BL2ReloadMessage(int reload, int playerId){
 		this.reload = reload;
 		this.playerId = playerId;
 	}
@@ -41,10 +41,10 @@ public class BL2Message implements IMessage{
 		ByteBufUtils.writeVarInt(buf, playerId, 5);	
 	}
 	
-	public static class Handler implements IMessageHandler<BL2Message, IMessage> {
+	public static class Handler implements IMessageHandler<BL2ReloadMessage, IMessage> {
 
 		@Override
-		public IMessage onMessage(BL2Message message, MessageContext ctx) {
+		public IMessage onMessage(BL2ReloadMessage message, MessageContext ctx) {
 			if (message.reload==1){
 				List list = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
 				for(int i=0;i<list.size();i++){
