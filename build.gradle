@@ -22,8 +22,8 @@ group= "lombax5832.BL2_v2" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "bl2_v2"
 
 minecraft {
-    version = "1.7.10-10.13.0.1208"
-    assetDir = "eclipse/assets"
+    version = "1.7.10-10.13.4.1448-1.7.10"
+    runDir = "eclipse"
 }
 
 dependencies {

@@ -17,6 +17,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -65,7 +66,7 @@ public class BL2PlayerGUI extends Gui{
 		
 		EntityPlayer player = mc.thePlayer;
 		
-		ItemStack itemGun = getMouseOver(1F);
+		ItemStack itemGun = getMouseOver(player);
 		if (itemGun!=null){
 			renderLookAtBox(itemGun, 10, (height/3)-20);
 			renderLookAtGunInfo(itemGun, 10, (height/3)-14);
@@ -247,71 +248,25 @@ public class BL2PlayerGUI extends Gui{
 		return longestInfoLength;
 	}
 	
-	public ItemStack getMouseOver(float p_78473_1_)
+	public ItemStack getMouseOver(EntityPlayer player)
     {
-        if (this.mc.renderViewEntity != null)
-        {
-            if (this.mc.theWorld != null)
-            {
-                Entity pointedEntity = null;
-                double d0 = (double)this.mc.playerController.getBlockReachDistance();
-                this.mc.objectMouseOver = this.mc.renderViewEntity.rayTrace(d0, p_78473_1_);
-                double d1 = d0;
-                Vec3 vec3 = this.mc.renderViewEntity.getPosition(p_78473_1_);
-
-                if (this.mc.playerController.extendedReach())
-                {
-                    d0 = 6.0D;
-                    d1 = 6.0D;
-                }
-                else
-                {
-                    if (d0 > 3.0D)
-                    {
-                        d1 = 3.0D;
-                    }
-
-                    d0 = d1;
-                }
-
-                if (this.mc.objectMouseOver != null)
-                {
-                    d1 = this.mc.objectMouseOver.hitVec.distanceTo(vec3);
-                }
-
-                Vec3 vec31 = this.mc.renderViewEntity.getLook(p_78473_1_);
-                Vec3 vec32 = vec3.addVector(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0);
-                pointedEntity = null;
-                Vec3 vec33 = null;
-                float f1 = 1.0F;
-                List list = this.mc.theWorld.getEntitiesWithinAABBExcludingEntity(this.mc.renderViewEntity, this.mc.renderViewEntity.boundingBox.addCoord(vec31.xCoord * d0, vec31.yCoord * d0, vec31.zCoord * d0).expand((double)f1, (double)f1, (double)f1));
-                double d2 = d1;
-
-                for (int i = 0; i < list.size(); ++i)
-                {
-                    Entity entity = (Entity)list.get(i);
-
-                    if (!entity.canBeCollidedWith())
-                    {
-                       if(entity!=null&&entity instanceof EntityItem){
-                    	   float f2 = entity.getCollisionBorderSize();
-                           AxisAlignedBB axisalignedbb = entity.boundingBox.expand((double)f2+2, (double)f2+2, (double)f2+2);
-                           if (axisalignedbb.isVecInside(vec3)){
-                        	   if (0.0D < d2 || d2 == 0.0D)
-                               {
-		                    	   ItemStack stack = entity.getDataWatcher().getWatchableObjectItemStack(10);
-		                    	   if(stack.getItem()==ModItems.itemGun){
-		                    		   d2 = 0.0D;
-		                    		   return stack;
-		                    	   }
-		                    	   
-                               }
-                           }
-                       }
-                    }
-                }
-            }
-        }
+		Entity entity = null;
+		MovingObjectPosition mop = player.rayTrace(4, 1.0F);
+		if(mop.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK){
+			Double range = 1.0D;
+			AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(mop.blockX - range, mop.blockY - range, mop.blockZ - range, mop.blockX + range, mop.blockY + 0.5D + range, mop.blockZ + range);
+			List entityItems = mc.theWorld.getEntitiesWithinAABB(EntityItem.class, aabb);
+			System.out.println(entityItems.size());
+			for(int i=0;i<entityItems.size();i++){
+				System.out.println("working");
+				if(entityItems.get(i)!=null){
+					EntityItem item = (EntityItem) entityItems.get(i);
+					if(item.getEntityItem().getItem()==ModItems.itemGun){
+						return item.getEntityItem();
+					}
+				}
+			}
+		}
 		return null;
     }
 }

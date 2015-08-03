@@ -27,8 +27,6 @@ public class BL2ReloadMessage implements IMessage{
 		this.playerId = playerId;
 	}
 	
-	
-	
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		reload = ByteBufUtils.readVarInt(buf, 5);
