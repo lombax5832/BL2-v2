@@ -256,7 +256,6 @@ public class BL2PlayerGUI extends Gui{
 			Double range = 1.0D;
 			AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(mop.blockX - range, mop.blockY - range, mop.blockZ - range, mop.blockX + range, mop.blockY + 0.5D + range, mop.blockZ + range);
 			List entityItems = mc.theWorld.getEntitiesWithinAABB(EntityItem.class, aabb);
-			System.out.println(entityItems.size());
 			for(int i=0;i<entityItems.size();i++){
 				System.out.println("working");
 				if(entityItems.get(i)!=null){

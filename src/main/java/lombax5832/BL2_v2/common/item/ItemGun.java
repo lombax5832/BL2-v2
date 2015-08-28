@@ -56,7 +56,7 @@ public class ItemGun extends ItemBL2{
 	        
 	        ItemGunUtils.handleShotLastTick(atr, (EntityPlayer) entity);
 			
-			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
+//			((EntityPlayer) entity).setItemInUse(stack, this.getMaxItemUseDuration(stack));
 			
 	        
 		}
@@ -86,7 +86,7 @@ public class ItemGun extends ItemBL2{
 	
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack){
-        return 2;
+        return 10;
     }
 	
 	@Override

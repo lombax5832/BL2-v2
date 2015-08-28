@@ -1,5 +1,6 @@
 package lombax5832.BL2_v2.client.render;
 
+import lombax5832.BL2_v2.BL2;
 import lombax5832.BL2_v2.client.model.ModelStorage;
 import lombax5832.BL2_v2.client.model.ModelStorageProperties;
 import lombax5832.BL2_v2.common.item.ItemGun.GunProperties;
@@ -31,13 +32,13 @@ public class RenderItemGunModel implements IItemRenderer{
 		GunProperties atr = new GunProperties(stack);
 		switch(type){
 			case ENTITY:{
-//				System.out.println(modelPropertiesEntity.angle);
 				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEntityList.get(atr.gunType));
 				renderRarityBeacon(minecraft, stack, 0,0F,0F,0F,0F,0F,0F);
 				break;
 			}
 			case EQUIPPED:{
 				renderGun(minecraft, stack, atr, (ModelStorageProperties) ModelStorage.modelPropertiesEquippedList.get(atr.gunType));
+				minecraft.thePlayer.setItemInUse(stack, stack.getMaxItemUseDuration());
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON:{

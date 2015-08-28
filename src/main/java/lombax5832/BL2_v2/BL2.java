@@ -6,6 +6,7 @@ import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.lib.Strings;
 import lombax5832.BL2_v2.network.BL2FireGunMessage;
 import lombax5832.BL2_v2.network.BL2ReloadMessage;
+import lombax5832.BL2_v2.network.BL2RenderGunMessage;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -41,6 +42,7 @@ public class BL2 {
 		networkBL2 = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MOD_ID);
 		networkBL2.registerMessage(BL2ReloadMessage.Handler.class, BL2ReloadMessage.class, 0, Side.SERVER);
 		networkBL2.registerMessage(BL2FireGunMessage.Handler.class, BL2FireGunMessage.class, 1, Side.SERVER);
+		networkBL2.registerMessage(BL2RenderGunMessage.Handler.class, BL2RenderGunMessage.class, 2, Side.CLIENT);
 	}
 	
 	@EventHandler
