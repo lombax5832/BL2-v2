@@ -46,9 +46,11 @@ public class BL2 {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.addTextures();
+		proxy.registerEntities();
 		proxy.registerItemRenderer();
 		proxy.registerRenderTickHandler();
 		proxy.addKeyBindings();
+		proxy.registerEntityRenderer();
 		FMLCommonHandler.instance().bus().register(new KeyInputHandlerBL2());
 	}
 	

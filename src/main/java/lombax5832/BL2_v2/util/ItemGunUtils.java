@@ -51,11 +51,11 @@ public class ItemGunUtils {
 	public static void fireGun(GunProperties atr, EntityPlayer entity){
 		world = entity.worldObj;
 		atr.currentAmmo--;
-//		world.spawnEntityInWorld(new EntityBullet(world,entity));
-		entity.rotationPitch -= 2F;
-		atr.recoilCushion += 2F;
-		if(world.isRemote)
-			BL2.networkBL2.sendToServer(new BL2FireGunMessage(entity.getEntityId()));
+		world.spawnEntityInWorld(new EntityBullet(world,entity));
+//		entity.rotationPitch -= 2F;
+//		atr.recoilCushion += 2F;
+//		if(world.isRemote)
+//			BL2.networkBL2.sendToServer(new BL2FireGunMessage(entity.getEntityId()));
 //		atr.shotLastTickTicker = 0;
 	}
 	

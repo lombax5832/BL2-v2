@@ -1,9 +1,12 @@
 package lombax5832.BL2_v2.client;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import lombax5832.BL2_v2.client.model.ModelStorageProperties;
+import lombax5832.BL2_v2.client.render.RenderBullet;
 import lombax5832.BL2_v2.client.render.RenderItemGunModel;
 import lombax5832.BL2_v2.client.settings.KeyBindingBL2;
 import lombax5832.BL2_v2.common.CommonProxy;
+import lombax5832.BL2_v2.common.entity.EntityBullet;
 import lombax5832.BL2_v2.common.item.ModItems;
 import lombax5832.BL2_v2.common.resource.ModelLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -24,6 +27,11 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void registerItemRenderer(){
 		MinecraftForgeClient.registerItemRenderer(ModItems.itemGun, new RenderItemGunModel());
+	}
+	
+	@Override
+	public void registerEntityRenderer(){
+		RenderingRegistry.registerEntityRenderingHandler(EntityBullet.class, new RenderBullet());
 	}
 	
 	@Override

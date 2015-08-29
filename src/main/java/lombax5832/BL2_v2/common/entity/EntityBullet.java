@@ -2,7 +2,9 @@ package lombax5832.BL2_v2.common.entity;
 
 import lombax5832.BL2_v2.BL2;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -21,7 +23,7 @@ public class EntityBullet extends EntityThrowable{
 	}
 
 	protected float getGravityVelocity(){
-		return 0;
+		return 0.01F;
 	}
 	
 	public void onUpdate(){
@@ -33,9 +35,13 @@ public class EntityBullet extends EntityThrowable{
 	protected void onImpact(MovingObjectPosition mop) {
 		setDead();
 		switch(mop.typeOfHit){
-		case BLOCK: worldObj.setBlockToAir(mop.blockX,mop.blockY,mop.blockZ);
+		case BLOCK:
+			worldObj.setBlockToAir(mop.blockX, mop.blockY, mop.blockZ);
 			break;
-		case ENTITY: 
+		case ENTITY:{
+			mop.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) this.getThrower()), 2F);
+			mop.entityHit.hurtResistantTime = 0;		
+		}
 			break;
 		default:
 			break;

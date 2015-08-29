@@ -1,8 +1,9 @@
 package lombax5832.BL2_v2.common;
 
-import lombax5832.BL2_v2.client.model.ModelStorageProperties;
-import lombax5832.BL2_v2.common.resource.ModelLocation;
+import lombax5832.BL2_v2.BL2;
+import lombax5832.BL2_v2.common.entity.EntityBullet;
 import lombax5832.BL2_v2.common.resource.TextureLocation;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * Proxy class to do certain things on the server side
@@ -17,6 +18,10 @@ public class CommonProxy {
 
 	public void registerItemRenderer() {}
 
+	public void registerEntities(){
+		EntityRegistry.registerModEntity(EntityBullet.class, "BL2EntityBullet", 0, BL2.instance, 80, 1, true);
+	}
+	
 	public void addTextures(){
 		TextureLocation.addGunTextureResource("winter");
 		TextureLocation.addGunTextureResource("forest");
@@ -37,5 +42,7 @@ public class CommonProxy {
 	public void registerRenderTickHandler() {}
 
 	public void addKeyBindings() {}
+
+	public void registerEntityRenderer() {}
 	
 }
