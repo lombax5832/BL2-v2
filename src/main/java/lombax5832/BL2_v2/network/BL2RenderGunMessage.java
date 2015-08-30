@@ -18,6 +18,8 @@ public class BL2RenderGunMessage implements IMessage{
 	private int playerId;
 	private int setInUseDuration;
 	
+	public BL2RenderGunMessage(){};
+	
 	public BL2RenderGunMessage(int playerId, int setInUse){
 		this.playerId = playerId;
 		this.setInUseDuration = setInUse;
